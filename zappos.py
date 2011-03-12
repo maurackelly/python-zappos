@@ -1,3 +1,7 @@
+"""
+The Zappos API is all JSON. This is pretty much all you need.
+"""
+
 import json
 import string
 import urllib
