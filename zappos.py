@@ -8,14 +8,14 @@ import urllib
 import urllib2
 
 
-class ZapposApiException(Exception):
+class ZapposException(Exception):
     """
     Zappos exception
     """
     pass
 
 
-class ZapposApi(object):
+class Zappos(object):
     """
     Python bindings for the Zappos API.
     """
@@ -34,9 +34,9 @@ class ZapposApi(object):
         try:
             result = json.load(response)
         except ValueError:
-            raise ZapposApiException, "Did not receive a JSON response."
+            raise ZapposException, "Did not receive a JSON response."
         if result['statusCode'] != '200':
-            raise ZapposApiException, "Status code %s" % result['statusCode']
+            raise ZapposException, "Status code %s" % result['statusCode']
         return result
 
     def _camel_case(self, value):
@@ -56,7 +56,7 @@ class ZapposApi(object):
 
 def main():
     from config import ZAPPOS_KEY
-    api = ZapposApi(ZAPPOS_KEY)
+    api = Zappos(ZAPPOS_KEY)
     print api.product(id=7718435, includes='["styles","stocks"]')
 
 
