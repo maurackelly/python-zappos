@@ -53,9 +53,7 @@ class ZapposApi(object):
 def main():
     from config import ZAPPOS_KEY
     api = ZapposApi(ZAPPOS_KEY)
-    print api.product(id=7718435, includes='["gender","styles","stocks"]')
-    # print api.brand(id=1425)
-    # print api.similarity(type="moreLikeThis", style_id=7718435)
+    print api.product(id=7718435, includes='["styles","stocks"]')
 
 
 if __name__ == '__main__':
